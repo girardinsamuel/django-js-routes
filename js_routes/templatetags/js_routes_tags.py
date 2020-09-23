@@ -8,7 +8,7 @@
 """
 
 from django import template
-
+from django.conf import settings
 from ..serializers import url_patterns_serializer
 
 
@@ -21,4 +21,5 @@ def js_routes(routes_only=False):
     return {
         'routes': url_patterns_serializer.to_json(),
         'routes_only': routes_only,
+        'base_url': settings.JS_ROUTES_BASE_URL
     }
