@@ -42,7 +42,14 @@ class URLPatternsSerializer:
 
     def to_json(self):
         """ Serializes the URLs to be exported in a JSON array. """
-        return json.dumps(dict(self._parse()))
+        urls_list = self._parse()
+        urls_dict = {}
+        for url in urls_list:
+            urls_dict[url[0]] = {
+                "uri": url[1],
+                "methods": []
+            }
+        return json.dumps(urls_dict)
 
     def _parse(self):
         return self._parse_resolver(self.resolver)
