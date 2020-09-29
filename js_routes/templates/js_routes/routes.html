@@ -1,5 +1,8 @@
 {% load static %}
-<script>window.Ziggy = {
-    namedRoutes: {{ routes|safe }},
-    baseUrl: "{{ base_url }}"
-};</script>
+<script>
+  window.Ziggy = {
+      namedRoutes: {{ routes|safe }},
+      baseUrl: "{{ base_url }}",
+      defaultParameters: []
+  };
+</script>
