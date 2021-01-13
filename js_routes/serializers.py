@@ -45,7 +45,8 @@ class URLPatternsSerializer:
         urls_list = self._parse()
         urls_dict = {}
         for url in urls_list:
-            uri = re.sub(r"(<[\w]*>)", r"{\1}", url[1]).replace("<", "").replace(">", "")
+            # remove leading slash
+            uri = re.sub(r"(<[\w]*>)", r"{\1}", url[1]).replace("<", "").replace(">", "")[1:]
             urls_dict[url[0]] = {
                 "uri": uri,
                 "methods": []
